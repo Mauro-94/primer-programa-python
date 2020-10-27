@@ -23,6 +23,9 @@ class Product:
     self.price = Entry(frame)
     self.price.grid(row = 2, column = 1)
 
+    #boton para agregar producto 
+    ttk.Button(frame, text = 'guardar producto').grid(row = 3, columnspan = 2, sticky = W + E)
+
 if __name__ == "__main__":
   window = Tk()
   application = Product(window)
