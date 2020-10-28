@@ -30,8 +30,8 @@ class Product:
     #tabla
     self.tree = ttk.Treeview(height = 10, columns = 2)
     self.tree.grid(row = 4, column = 0, columnspan = 2)
-    self.tree.heading('#0',text = 'Nombre',ANCHOR = CENTER)
-    self.tree.heading('#1',text = 'Precio',ANCHOR = CENTER)
+    self.tree.heading('#0',text = 'Nombre',anchor = CENTER)
+    self.tree.heading('#1',text = 'Precio',anchor = CENTER)
 
 if __name__ == "__main__":
   window = Tk()
