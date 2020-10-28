@@ -5,6 +5,8 @@ import sqlite3
 
 class Product:
 
+  db_name = 'database.db'
+
   def __init__(self, window):
     self.wind = window
     self.wind.title('Productos')
@@ -30,8 +32,22 @@ class Product:
     #tabla
     self.tree = ttk.Treeview(height = 10, columns = 2)
     self.tree.grid(row = 4, column = 0, columnspan = 2)
-    self.tree.heading('#0',text = 'Nombre',ANCHOR = CENTER)
-    self.tree.heading('#1',text = 'Precio',ANCHOR = CENTER)
+    self.tree.heading('#0',text = 'Nombre', anchor = CENTER)
+    self.tree.heading('#1',text = 'Precio', anchor = CENTER)
+
+    self.get_product()
+
+  def run_query(self, query, parameters = ()):
+    with sqlite3.connect(self.db_name) as conn:
+      cursor = conn.cursor()
+      result = cursor.execute(query, parameters)
+      conn.commit()
+      return result
+
+  def get_product(self):
+    query = 'SELECT * FROM product ORDER BY nombre DESC'
+    db_rows = self.run_query(query)
+    print(db_rows)
 
 if __name__ == "__main__":
   window = Tk()
