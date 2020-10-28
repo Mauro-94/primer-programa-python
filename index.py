@@ -61,10 +61,13 @@ class Product:
 
   def add_product(self):
     if self.validation():
-      print (self.name.get())
-      print (self.price.get())
+      query = 'INSERT INTO product VALUES(NULL, ?,?)'
+      parameters = (self.name.get(), self.price.get())
+      self.run_query(query, parameters)
+      print('producto guardado')
     else:
       print('nombre y precios requeridos')
+    self.get_product() 
 
 if __name__ == "__main__":
   window = Tk()
