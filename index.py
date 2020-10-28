@@ -16,6 +16,7 @@ class Product:
     #Name input
     Label(frame, text = 'Nombre: ').grid(row = 1, column = 0)
     self.name = Entry(frame)
+    self.name.focus()
     self.name.grid(row = 1, column = 1)
 
     #price imput
