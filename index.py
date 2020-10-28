@@ -54,7 +54,7 @@ class Product:
     db_rows = self.run_query(query)
     #rellenando datos
     for row in db_rows:
-      print(row)
+      self.tree.insert('', 0, text = row[1], values = row[2])
 
 if __name__ == "__main__":
   window = Tk()
