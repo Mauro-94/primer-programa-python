@@ -39,6 +39,11 @@ class Product:
     self.tree.heading('#0',text = 'Nombre', anchor = CENTER)
     self.tree.heading('#1',text = 'Precio', anchor = CENTER)
 
+    #botones
+    ttk.Button(text = 'Borrar').grid(row = 5, column = 0, sticky = W + E)
+    ttk.Button(text = 'Editar').grid(row = 5, column = 1, sticky = W + E)
+    
+    #llenando filas
     self.get_product()
 
   def run_query(self, query, parameters = ()):
@@ -74,6 +79,7 @@ class Product:
     else:
       self.message['text'] = 'nombre y precio requerido'
     self.get_product() 
+
 
 if __name__ == "__main__":
   window = Tk()
