@@ -41,7 +41,7 @@ class Product:
 
     #botones
     ttk.Button(text = 'Borrar', command = self.delete_product).grid(row = 5, column = 0, sticky = W + E)
-    ttk.Button(text = 'Editar').grid(row = 5, column = 1, sticky = W + E)
+    ttk.Button(text = 'Editar', command = self.edit_product).grid(row = 5, column = 1, sticky = W + E)
     
     #llenando filas
     self.get_product()
@@ -93,6 +93,18 @@ class Product:
     self.run_query(query, (name, ))
     self.message['text'] = ' producto {} eliminado satisfactoriamente'.format(name) 
     self.get_product()   
+
+  def edit_product(self):
+    self.message['text'] = ''
+    try:
+      self.tree.item(self.tree.selection())['text'][0]
+    except IndexError as e:
+      self.message['text'] = 'para editar un producto, porfavor selecciona un producto de la lista'
+      return
+    name = self.tree.item(self.tree.selection())['text']
+    old_price = self.tree.item(self.tree.selection())['values'][0]
+    self.edit_wind = Toplevel()
+    self.edit_wind.title = 'editar producto'     
 
 if __name__ == "__main__":
   window = Tk()
