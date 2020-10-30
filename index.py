@@ -111,6 +111,19 @@ class Product:
     Entry(self.edit_wind, textvariable = StringVar(self.edit_wind, value = name), state ='readonly').grid(row = 0, column = 2)
 
     # nuevo nombre  
+    Label(self.edit_wind, text = 'Nuevo nombre: ').grid(row = 1, column = 1)
+    new_name = Entry(self.edit_wind)
+    new_name.grid(row = 1, column = 2)
+
+    #precio anterior
+    Label(self.edit_wind, text = 'Precio anterior: ').grid(row = 2, column = 1)
+    Entry(self.edit_wind, textvariable = StringVar(self.edit_wind, value = old_price), state = 'readonly').grid(row = 2, column = 2)
+
+
+    #nuevo precio
+    Label(self.edit_wind, text = ' Nuevo precio: ').grid(row = 3, column = 1)
+    new_price = Entry(self.edit_wind)
+    new_price.grid(row = 3, column = 2)
 
 if __name__ == "__main__":
   window = Tk()
