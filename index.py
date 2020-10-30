@@ -125,6 +125,17 @@ class Product:
     new_price = Entry(self.edit_wind)
     new_price.grid(row = 3, column = 2)
 
+    Button(self.edit_wind, text = 'Guaradr', command = lambda: self.edit_records(new_name.get(), name, new_price.get(), old_price)).grid(row = 4, column = 2, sticky = W)
+
+  def edit_records(self, new_name, name, new_price, old_price):
+    query = 'UPDATE product SET nombre = ?, precio = ? WHERE nombre = ? AND precio = ?'
+    parameters = (new_name, new_price, name, old_price)
+    self.run_query(query, parameters)
+    self.edit_wind.destroy()
+    self.message['text'] = 'Producto {} editado satisfactoriamente'.format(name)
+    self.get_product()
+
+
 if __name__ == "__main__":
   window = Tk()
   application = Product(window)
